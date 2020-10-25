@@ -1,0 +1,105 @@
+#bg{
+	width:1000px;
+	margin:auto;
+}
+#siteName{
+	font-size:60px;
+	border-top:solid 2px black;
+	border-bottom:solid 2px black;
+	padding:15px;
+}
+#siteName img{
+	width:110px;
+	border-radius: 50%;
+	vertical-align:middle;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+#imageArea{
+	position:relative;
+	z-index:0;
+	width:1200px;
+	height:600px;
+}
+
+#headerImg{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+}
+
+#twitter{
+	position:absolute;
+	z-index:2;
+	top:5%;
+	//left:600px;
+	right:19%;
+}
+
+.contents{
+	margin-top:50px;
+	margin-bottom:30px;
+}
+.index{
+	font-size:22px;
+	margin-top:20px;
+}
+.gamelist{
+	width:200px;
+	overflow:		hidden;
+	border-radius: 5%;
+}
+.gamelist img{
+	//border-radius: 5%;
+}
+.gamelist p{
+	word-wrap:break-word;
+	width:190px;
+	margin:auto;
+}
+.gametitle{
+	font-size:17px;
+}
+.gametext{
+	font-size:14px;
+}
+#news-wrapper{
+	margin:0 auto;
+	margin-top:15px;
+	background-color:white;
+}
+.news{
+	width:100%;
+	height:100%;
+}
+
+
+
+
+.sample10 {
+	width:			200px;
+	height:			150px;
+	overflow:		hidden;
+
+	position:		absolute;
+}
+.sample10 .caption {
+	color:			#fff;
+	padding-top:		10px;
+	text-align: 		center;
+}
+.sample10 .mask {
+	width:			100%;
+	height:			50px;
+	position:		absolute;
+	top:			-50px;	/* 枠の上に置いて表示しない */
+	left:			0;
+	background-color:	rgba(0,0,0,0.4);
+	-webkit-transition:	all 0.4s ease;
+	transition:		all 0.4s ease;
+}
+.sample10:hover .mask {
+	top:		0px;	/* 下に降りてくるように見せる */
+}
