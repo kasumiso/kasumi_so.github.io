@@ -61,6 +61,11 @@
 					<span class="fcsBtn selected" id="fcs_fl0" onclick=focusSet(0)>しない</span>
 				</div>
 				<div style="margin-bottom:15px;" class="option">
+					*PCから素材を追加するとこの機能は使用できなくなります。*<br>
+					<input type="text" size="10" value="とある本丸" id="filename" maxlength="12">
+					<input type="button" id="save" value="この名前で素材の配置を保存" onclick=Save()><br>
+				</div>
+				<div style="margin-bottom:15px;" class="option">
 					画像を素材リストに追加する：<br>
 					<input type="file" id="selectImg" accept=".png" onchange=AddImage()>
 				</div>
@@ -309,11 +314,13 @@
 	<script>
 		var bps=10;
 		var lay_no=0;
+		var isDraw=true;
+		var saveEnabled=true;
 		var category="def";
 		var grid=0;
 		var snap=0;
 		var objOnOff=0;
-		var focus=0;
+		var focus=1;
 		var layObj=[];
 			layObj[0]=[];
 			layObj[1]=[];
@@ -335,6 +342,9 @@
 		
 		var clickImg=new Image();
 		var xy=[-1,-1];
+		
+		var splitdata=[];
+		var splitdata2=[];
 		
 		function GridSet(grid_size){
 			document.getElementById("grid"+grid).className="gridBtn";
@@ -390,7 +400,6 @@
 		function ObjClick(click_src){
 			document.getElementById("gen").style.cursor='url("'+click_src+'"),auto';
 			clickImg.src=click_src;
-			//if(!clickImg.src)alert(clickImg);
 		}
 		
 		function CvsXY(e, that){
@@ -440,10 +449,7 @@
 			layObj[0][0].top=0;
 			layObj[0][0].left=0;
 			//壁
-			
-			layObj[0][0].onload=function(){
-				LayChange(0);
-			}
+			Draw();
 		}
 		function BgSet(bg_src,bg_lay){
 			layObj[bg_lay]=[];
@@ -451,10 +457,7 @@
 			layObj[bg_lay][0].src=bg_src;
 			layObj[bg_lay][0].top=0;
 			layObj[bg_lay][0].left=0;
-			
-			layObj[bg_lay][0].onload=function(){
-				LayChange(0);
-			}
+			Draw();
 		}
 		function ClearLay(){
 			layObj_old[lay_no]=layObj[lay_no].concat();
@@ -467,6 +470,7 @@
 		}
 		
 		function AddImage(){
+			saveEnabled=false;
 			//画像読込
 			var datafile=document.getElementById("selectImg").files;
 			var reader=new FileReader();
@@ -509,6 +513,96 @@
 			a.click();
 		}
 		
+		function Save(){
+			if(!saveEnabled){
+				alert("PCから画像を追加している為この機能は使用できません");
+				return;
+			}
+			//var put_file=document.createElement('a');
+			var file_name=document.getElementById("filename").value;
+				
+			//配列の中身
+			var put_data="";
+			for(var i=0;i<layObj.length;i++){
+				//put_data+="@";
+				for(var j=0;j<layObj[i].length;j++){
+					put_data+=layObj[i][j].src+",";
+					put_data+=layObj[i][j].top+",";
+					put_data+=layObj[i][j].left;
+					if(j != layObj[i].length-1)put_data+=",";
+				}
+				if(i<layObj.length-1)put_data+="#";
+			}
+			let blob = new Blob([put_data],{type:"text/plan"});
+			let link = document.createElement('a');
+			link.href = URL.createObjectURL(blob);
+			link.download = file_name+".honmaru";
+			link.click();
+		}//Save end
+		
+		function Load(){
+			var isGetDate=false;
+			//データ読込
+			var datafile=document.getElementById("selectData").files;
+			var reader=new FileReader();
+			reader.readAsText(datafile[0]);
+			reader.onload=function(evt){
+				//読込完了・画像描画
+				layObj[0]=[];
+				layObj[1]=[];
+				layObj[2]=[];
+				layObj[3]=[];
+				layObj[4]=[];
+				layObj[5]=[];
+				isDraw=false;
+				splitdata=reader.result.split('#');
+				loadi=0;
+				loadj=0;
+				for(var i=0;i<splitdata.length;i++){
+					if(splitdata[i]!=""){
+						isGetDate=true;
+						splitdata2=splitdata[i].split(',');
+						SetImg(i,0);
+						break;
+					}
+				}
+				if(!isGetDate){
+					alert("ロードに成功しました");
+					saveEnabled=true;
+					isDraw=true;
+				}
+			}
+		}
+		
+		function SetImg(set_i,set_j){
+			layObj[set_i][set_j]=new Image;
+			layObj[set_i][set_j].src=splitdata2[set_j*3];
+			layObj[set_i][set_j].onload=function(){
+				layObj[set_i][set_j].top=splitdata2[set_j*3+1];
+				layObj[set_i][set_j].left=splitdata2[set_j*3+2];
+				if(set_j<(splitdata2.length/3)-1){
+					SetImg(set_i,set_j+1);
+				}else{
+					isGetDate=false;
+					for(var i=set_i+1;i<splitdata.length-1;i++){
+						if(splitdata[i]!=""){
+							isGetDate=true;
+							splitdata2=splitdata[i].split(',');
+							SetImg(i,0);
+							break;
+						}
+					}
+					if(!isGetDate){
+						alert("ロードに成功しました");
+						saveEnabled=true;
+						isDraw=true;
+						Draw();
+					}
+				}
+			}
+			//splitdata2=splitdata[set_i].result.split(',');
+		}
+		
 		function UpDate(){
 			
 			//cursorが範囲外の時は呼ばない
@@ -516,6 +610,7 @@
 			setTimeout(UpDate,Math.floor(1000/bps));
 		}
 		function Draw(){
+			if(!isDraw)return;
 			ctx.clearRect(0,0,cvs.width,cvs.height);
 			if(focus==0)ctx.globalAlpha=1.0;
 			
