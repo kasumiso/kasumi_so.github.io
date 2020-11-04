@@ -61,14 +61,18 @@
 					<span class="fcsBtn selected" id="fcs_fl0" onclick=focusSet(0)>しない</span>
 				</div>
 				<div style="margin-bottom:15px;" class="option">
+					画像を素材リストに追加する：<br>
+					<input type="file" id="selectImg" accept=".png" onchange=AddImage()>
+				</div>
+				<div style="margin-bottom:15px;" class="option">
 					データを保存：<br>
-					<font size=2>*PCから素材を追加するとこの機能は使用できなくなります。*</font><br>
+					<font size=2>*PCから画像を追加するとこの機能は使用できなくなります。*</font><br>
 					<input type="text" size="10" value="とある本丸" id="filename" maxlength="12">
 					<input type="button" id="save" value="この名前で本丸を保存" onclick=Save()><br>
 				</div>
 				<div style="margin-bottom:15px;" class="option">
-					画像を素材リストに追加する：<br>
-					<input type="file" id="selectImg" accept=".png" onchange=AddImage()>
+					保存した配置を読込む：<br>
+					<input type="file" id="selectData" accept=".honmaru" onchange=Load()>
 				</div>
 				<!-- 画像生成ボタン !-->
 				<div style="margin-bottom:15px;" class="option">
@@ -265,7 +269,8 @@
 		
 		<div id="caution">
 			<p class="cmenu">--- 利用規約　---</p><br>
-			このジェネレーターで作った画像はピクスク上で開かれる刀剣乱舞のオンリーで自由に使用することが出来ます。<br>
+			このジェネレーターで作った画像はピクスク上で開かれる刀剣乱舞のオンリーの他、公式の二次創作ガイドラインに反さない作品へ自由に使用することが出来ます。<br>
+			ただし、混乱を避ける為ピクスクのオンリー以外で何かしらの作品に使用する際は『素材：とある本丸ジェネレーター』のようなクレジット表記をどこかにお願いします。（印刷物やゲームに組み込む等の場合）<br>
 			また、素材の改変も自由です。<br>
 			ただし、下記の事はご遠慮ください。<br>
 			<br>
@@ -275,7 +280,7 @@
 			要望やバグ報告・その他何かあれば<a href="https://twitter.com/_kasumi_so_">Twitter</a>までお願いします。<br>
 			<br>
 			<p size=5 class="cmenu">--- ジェネレーターの使い方　---</p><br>
-			※このジェネレーターはPC専用です。スマホからはご利用になれません※<br>
+			※このジェネレーターはPC専用です。スマホからは一部の操作が出来ません※<br>
 			※ブラウザはクローム推奨・IEサポート対象外です。※<br>
 			※また、Macを持っていないのでsafariも対象外になります。※<br>
 			<br>
@@ -321,7 +326,7 @@
 		var grid=0;
 		var snap=0;
 		var objOnOff=0;
-		var focus=1;
+		var focus=0;
 		var layObj=[];
 			layObj[0]=[];
 			layObj[1]=[];

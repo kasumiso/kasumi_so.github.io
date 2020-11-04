@@ -10,13 +10,13 @@ body{
 	margin:0;
 }
 #bg{
-	width:800px;
+	width:860px;
 	padding-bottom:60px;
 	margin:auto;
 	background-image:url("img/bg3.png");
 }
 #header{
-	width:800px;
+	width:860px;
 	height:auto;
 }
 #main{
