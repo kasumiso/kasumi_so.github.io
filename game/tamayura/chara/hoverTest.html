@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style type="text/css">
+		#wrap{
+			position:relative;
+			height:30vw;
+			width:40vw;
+			background-color:blue;
+			margin:auto;
+		}
+		#wrap img{
+			height:100%;
+			width:auto;
+		}
+		#flex{
+			position:absolute;
+			display:flex;
+			top:0;
+			left:0;
+			height:100%;
+			width:100%;
+		}
+		.img2{
+			opacity:0;
+			transition:ease-in 1s;
+		}
+		.img2:hover{
+			opacity:1;
+			transition:0s;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<img id="imgbase" src="img/ch00.jpg">
+		<div id="flex">
+			<img class="img2" src="img/ch002.jpg">
+			<img class="img2" src="img/ch003.jpg">
+			<img class="img2" src="img/ch004.jpg">
+			<img class="img2" src="img/ch005.jpg">
+		<div>
+	</div>
+</body>
+</html>

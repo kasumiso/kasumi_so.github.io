@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="../load.js"></script>
+	<title>html5</title>
+	<link rel="stylesheet" href="../main.css" type="text/css">
+	<link rel="stylesheet" href="system.css" type="text/css">
+</head>
+
+<body>
+	<div id="main">
+		<div>
+			<a href="../index.html"><img class="menuBtn" src="../img/menu_top.png"></a>
+			<a href="../story/story.html"><img class="menuBtn" src="../img/menu_story.png"></a>
+			<a href="../chara/chara.html"><img class="menuBtn" src="../img/menu_chara.png"></a>
+			<img class="menuBtn" src="../img/menu_system.png">
+			<img class="deactivateBtn" src="../img/menu_get.png">
+		</div>
+		
+		<div id="border"></div>
+		
+		<h1>審神者の仕事</h1>
+		審神者となったあなたは本丸と呼ばれる場所で生活していくことになります。<br>
+		最終目的は劣勢の戦局を覆す事ですがそれは簡単な事ではありません。<br>
+		まずは鍛刀によって戦力を増やし、彼らとコミュニケーションを取り絆を深めながら来たるべき決戦の日に備えましょう。<br>
+		<br>
+		<div style="display:flex;">
+			<a href="#sys1"><p>鍛刀</p></a>
+			<a href="#sys2"><p>交流</p></a>
+			<a href="#sys3"><p>出陣</p></a>
+			<a href="#sys4"><p>遠征</p></a>
+		</div>
+		
+		<br>
+		<div id="sys1"></div>
+		<h2>鍛刀</h2>
+		ゲーム開始時の戦力はサポート役として政府から拝領した加州清光のみです。<br>
+		清光は二人っきりでも喜びそうですが、そういう訳にもいかないので鍛刀によって何振りか新しい仲間を顕現させます。<br>
+		<div class="flex">
+			<img class="ss" src="img/sys01.jpg">
+			<img class="ss" src="img/sys02.jpg">
+		</div>
+		顕現する刀は全部で五種類あり、鍛刀時のレシピによって誰が来るか確率が変動します。<br>
+		ただし主人公は力が弱く、三振り程顕現させたところで力尽きるようです。<br>
+		<br>
+		<div id="sys2"></div>
+		<h2>交流</h2>
+		鍛刀が終わったら、顕現した男士達と交流しましょう。<br>
+		彼らは人間と同じように感情があり、親密になるほど尽くしてくれます。<br>
+		<div class="flex">
+			<img class="ss" src="img/minimap.jpg">
+			<img class="ss" src="img/sys03.jpg">
+		</div>
+		交流は1日に3回ミニマップに表示される移動先を選択して行います。<br>
+		ただし、主人公は他人との交流が苦手なので交流する度に少しずつストレス値が上がっていきます。<br>
+		ストレス値が上がりすぎると心に余裕がなくなり、交流しても好感度が上がらなくなったり、イベントが発生しなくなったりします。<br>
+		
+		ストレス度合は可視化できませんが、審神者部屋のBGMが精神状態によって変化するのでそれを目安に行動を決めましょう。<br>
+		ストレス値がMAXになると主人公が奇行に走ります。<br>
+		奇行後は気分がすっきりしてストレス値が下がりますが、正規の攻略法ではありません。<br>
+		<br>
+		<div id="sys3"></div>
+		<h2>出陣</h2>
+		<div class="flex">
+			<img class="ss" src="img/battleMap00.jpg">
+			<img class="ss" src="img/battle.jpg">
+		</div>
+		交流だけでは強くなれないので、男士達を適度に出陣させ強くなってもらいます。<br>
+		ただし、主人公は血を見るのが苦手で男士達が重傷になって帰ってくると卒倒しストレス値が上がります。<br>
+		また、どういう訳か手入れも出来ないので、負傷すると日数経過で自然に治癒するのをを待つ事になります。<br>
+		負傷状態でも出陣可能かつ刀剣破壊もありませんが、まず勝てないのでそれなりに元気な状態を維持して下さい。<br>
+		<br>
+		<div id="sys4"></div>
+		<h2>遠征</h2>
+		何をするにもストレスをため込む主人公ですが、遠征の日だけは誰もいない本丸でゆっくりと羽を伸ばすことが出来るようです。<br>
+		男士達を遠征に出すとストレス値が大きく下がります。<br>
+		
+		また、遠征中は日中の行動回数が1回になり、この時街へ出かける事も出来ます。<br>
+		街でしか会えない人物もいるので、たまに出かけてみて下さい。<br>
+		<br>
+		
+		<img id="sakura" src="../img/sakura.png">
+	</div>
+	
+	<script>
+		$(function(){
+			$('a[href^="#"]').click(function(){
+				var speed = 500;
+				var href= $(this).attr("href");
+				var target = $(href == "#" || href == "" ? 'html' : href);
+				var position = target.offset().top;
+				$("html, body").animate({scrollTop:position}, speed, "swing");
+				return false;
+			});
+		});
+	</script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
