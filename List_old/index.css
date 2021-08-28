@@ -1,0 +1,168 @@
+html{
+	width:100%;
+	padding:0;
+	margin:0;
+}
+body{
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+#main{
+	max-width:1100px;
+	width:100%;
+	margin:auto;
+}
+#menu{
+	display:flex;
+}
+#header{
+	border-top:solid #cc99cc 2px;
+	border-bottom:solid #cc99cc 2px;
+	margin:13px 0;
+	padding:13px;
+	display:flex;
+	justify-content:space-between;
+}
+.ico{
+	width:160px;
+	height:auto;
+	border-radius:50%;
+	border:solid 2px #cc99cc;
+}
+#title{
+	text-align:center;
+	margin:auto;
+	font-size:min(36px,3.5vw);
+}
+#topics{
+	display:flex;
+	justify-content:space-between;
+}
+.topic{
+	position:relative;
+	width:320px;
+	border:solid #999bcc 2px;
+	border-radius:10px;
+	margin:20px;
+	overflow:hidden;
+	box-shadow: 0 5px 15px 0 rgba(5,5,50,0.1);
+}
+.topic:hover{
+	box-shadow: 0 5px 20px 0 rgba(5,5,50,0.2);
+}
+a:link{
+	color:black;
+	text-decoration:none;
+}
+a:visited{
+	color:black;
+}
+a:hover{
+	color:black;
+}
+a:active{
+	color:black;
+}
+.topic img{
+	width:100%;
+	height:auto;
+}
+.cts{
+	position:absolute;
+	top:5%;
+	left:5%;
+	color:white;
+	line-height:min(28px,3.5vw);
+	font-size:min(28px,3.5vw);
+	filter:drop-shadow(3px 3px 3px rgba(0,0,0,0.5));
+	opacity:0.9;
+}
+.sub{
+	font-size:min(20px,2vw);
+}
+.text{
+	padding:min(10px,2vw);
+}
+
+#footer{
+	border-top:solid #cc99cc 2px;
+	padding:13px;
+	max-width:1100px;
+	width:100%;
+	height:50px;
+	box-sizing:border-box;
+	position:absolute;
+	bottom:0;
+}
+#twitter{
+	color:skyblue;
+	filter:drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
+}
+#twitter a:link{
+	color:skyblue;
+}
+#twitter a:visited{
+	color:skyblue;
+}
+#twitter a:hover{
+	color:skyblue;
+}
+#twitter a:active{
+	color:skyblue;
+}
+
+@media only screen and (max-width:1100px){
+	#header{
+		margin:1vw 0;
+		padding:1vw;
+	}
+	.ico{
+		width:15vw;
+		height:auto;
+	}
+	.topic{
+		width:30vw;
+		height:auto;
+		margin:2vw;
+	}
+
+}
+
+@media only screen and (max-width:950px){
+	#header{
+		justify-content:flex-start;
+	}
+	#title{
+		margin:auto 3vw;
+	}
+	.icoB{
+		display:none;
+	}
+	.topic{
+		width:92vw;
+		border:solid #999bcc 1px;
+		margin:2vw auto;
+	}
+	#topics{
+		flex-wrap: wrap;
+	}
+	.cts{
+		font-size:5.5vw;
+		line-height:5.5vw;
+	}
+	.sub{
+		font-size:min(3.5vw);
+	}
+#footer{
+	position:relative;
+}
+	
+}
+
+
+
+
+
+
