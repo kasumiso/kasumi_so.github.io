@@ -162,7 +162,7 @@
             </p>
 
 			<p>
-                If you have any requests, bug reports, or etc, please reach out via <a href="https://twitter.com/_kasumi_so_">Twitter(X)</a>.
+                If you have any requests, bug reports, etc, please reach out via <a href="https://twitter.com/_kasumi_so_">Twitter(X)</a>.
                 I may not respond right away, but I'll try when I'm free!
             </p>
 		</div>
@@ -439,31 +439,31 @@
 		if(btnData[select].x==0 || btnData[select].y==0 || btnData[select].w==0 || btnData[select].h==0)num_check=false;
 		if(isNaN(btnData[select].x) || isNaN(btnData[select].y) || isNaN(btnData[select].w) || isNaN(btnData[select].h))num_check=false;
 		if(!num_check){
-			alert("ボタンの座標かサイズが正しく指定されていません");
+			alert("Please re-check the specified button settings.");
 			return;
 		}
 		
 		if(!btnData[select].btn_name.match(/^[A-Za-z0-9-_]+$/)){
-			alert("ボタン名は半角英数字で指定してください");
+			alert("Please specify the button name using only half-width alphanumeric characters.");
 			return;
 		}
 		
 		if(btnData[select].label==""){
-			alert("ラベル名が指定されていません");
+			alert("No label name was specified.");
 			return;
 		}
 		if(!btnData[select].label.match(/^[A-Za-z0-9-_]+$/)){
-			alert("ラベル名は半角英数字で指定してください");
+			alert("Please specify the label name using only half-width alphanumeric characters.");
 			return;
 		}
 		//ボタンがgalleryなのにフラグ用変数が指定されていない場合
 		if(btnData[select].type=="gallery"){
 			if(btnData[select].flag==""){
-				alert("フラグ用変数が指定されていません");
+				alert("No flag variable was specified.");
 				return;
 			}
 			if(!btnData[select].flag.match(/^[0-9]+$/)){
-				alert("フラグ用変数は半角数字で指定してください");
+				alert("Please specify the lag var using only half-width numeric characters.");
 				return;
 			}
 		}
@@ -471,7 +471,7 @@
 		//ボタン名が重複している場合
 		for(var i=0;i<btnData.length;i++){
 			if(btnData[i].set_fl && btn_name.value==btnData[i].btn_name){
-				alert("登録済のボタンと同じ名前は使用できません");
+				alert("You cannot use the same button name more than once.");
 				return;
 			}
 		}
@@ -525,11 +525,11 @@
 	
 	function Generate(){
 		if(file_name.value==""){
-			alert("ラベル名が指定されていません");
+			alert("No label name was specified.");
 			return;
 		}
 		if(!file_name.value.match(/^[A-Za-z0-9-_]+$/)){
-			alert("ボタン名は半角英数字で指定してください");
+			alert("Please specify the label name using only half-width alphanumeric characters.");
 			return;
 		}
 		
