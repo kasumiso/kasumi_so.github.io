@@ -1,7 +1,13 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
+
+    <!--
+        Original: @_kasumi_so_
+        English Translation: Kyou (@heya_kyou)
+    -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
@@ -9,23 +15,24 @@
 	<link rel="stylesheet" href="base.css" type="text/css">
 
 	<meta name="keywords" content="suika2,gui">
-	<meta name="description" content="GUIに使用する仮画像とファイルを生成するsuika2用の制作補助ツールです。ブラウザ上で動作します。">
+	<meta name="description" content="Easily generate GUI definition files for use in Suika2 projects!">
 		
 </head>
 
 <body id="body">
-	<span style="font-size:28px;margin-right:30px;">GUIジェネレーター</span>英語版はこちら→ <a href="en/index.html">English version</a>
+
 	<div id=main>
 		<div id="whiteBoard"></div>
 		<div id="bg"></div>
 		<canvas id=cvs width="1280" height="720">
-			canvas非対応のブラウザです。このページはChromeからの利用を推奨しています。
+			It looks like this browser doesn't support the <code>canvas</code> element.
+            Please try again using Chrome.
 		</canvas>
 		
 		<div id=settings>
 			<!-- name -->
 			<div>
-				ボタン名:<br>
+				Button Name:<br>
 				<input type="text" id="btn_name" value="BUTTON" oninput="Change('btn_name')"><br>
 			</div>
 			<br>
@@ -70,13 +77,13 @@
 			<br>
 			<!-- set delete -->
 			<div>
-				<button id="set" onclick="BtnSet()">ボタン登録</button>　<button id="delete" onclick="BtnDelete()">ボタン削除</button>
+				<button id="set" onclick="BtnSet()">Add Button</button>　<button id="delete" onclick="BtnDelete()">Remove Button</button>
 			</div>
 			
 			<br><br>
 			
 			<div>
-				使用する背景を表示する：<br>
+				Set a background:<br>
 				<input type="file" id="selectBG" accept=".png,.jpg" onchange="SetBG()">
 			</div>
 			
@@ -84,60 +91,80 @@
 			
 			<!-- generate -->
 			<div>
-				ファイル名：<input type="text" id="file_name" size="10" value="GUI1">.txt
+				File name:<input type="text" id="file_name" size="10" value="GUI1">.txt
 			</div>
 			<div>
-				画像拡張子:
+				Image extension:
 				<input type="radio" name="ext" value="png">png
 				<input type="radio" name="ext" value="jpg" checked>jpg
 			</div>
 			<br>
 			<!-- generate -->
 			<div>
-				<button id="generate" onclick="Generate()">GUIデータ作成</button>
+				<button id="generate" onclick="Generate()">Generate GUI Definition File</button>
 			</div>
 		</div>
 	</div>
 	
 	<div id="caution">
-		<h1>GUIジェネレーターの使い方</h1>
+		<h1>Tutorial</h1>
 		<div>
-			<p>■ボタン（クリッカブルマップ）の設置</p>
-			①メイン画面内をクリックしてボタンを直接描画するか、メニュー画面のX・Y・width・heightに数値を入力します。<br>
-			クリックで描画後にメニュー画面から数値入力で微調整する事も出来ます。
-			②メニュー画面のtypeでボタンのタイプを選択します。指定したtypeがgalleryの場合はflagの指定も行います。<br>
-			③メニュー画面のlabelに飛び先のラベル名を入力します。<br>
-			④メニュー画面のpointseとclickseに鳴らしたいファイル名を入力します。ファイル名には拡張子（.ogg）を含めて下さい。<br>
-			⑤必要項目の入力が終わったら『ボタン登録』を押してください。ボタン情報が登録されると画面内のボタンがグレーから黒に変わります。<br>
-			<br>
-			<p>■ボタン（クリッカブルマップ）の削除</p>
-			削除したいボタンをクリックするとボタンが選択状態となりグレー表示に変わります。<br>
-			この状態でメニュー画面の『ボタン削除』を押してください。<br>
-			<br>
-			<p>■ボタン（クリッカブルマップ）の再編集</p>
-			再編集したいボタンを画面上でクリックし、選択状態（グレー表示）にします。
-			その状態でメイン画面内をクリックしボタンを直接描画するか、メニュー画面に数値を入力してください。
-			編集が終わったら『ボタン登録』を押して編集を終了します。<br>
-			<br>
-			<p>■背景画像の読み込み</p>
-			クリック領域の指定だけしたいという人向けの機能です。<br>
-			『ファイルを選択』ボタンを押して実際に使用する画像を指定すると画面内に薄く背景画像が表示されます。<br>
-			使用できる画像サイズは1280*720のみです。サイズが違うとうまく表示されません。<br>
-			<br>
-			<p>■GUIデータの生成</p>
-			①作成するGUIファイルの名前を入力します。<br>
-			②作成したい画像の拡張子を選択します。jpgは白背景にボタンが表示されたもの、pngは透明な画像にボタンの線画のみ表示されたものが作成されます。<br>
-			③全ての設定が終わったら『GUIデータ生成』ボタンを押します。<br>
-			※セキュリティの関係で複数ファイルのダウンロードの許可を求めるダイアログが表示されますが、許可しないと最初の1ファイルしかDL出来ないのでご注意ください。<br>
-			※背景画像を指定していても背景なしの状態でボタンのみ表示されたものが作成されます。<br>
-			<br>
-			<p>■免責事項など</p>
-			このジェネレーターは自分のゲーム制作の効率アップを目的に作成されたものをとりあえず他の人も使えるよう公開しています。<br>
-			その為人によっては足りない機能などもあるかと思いますが、自分の制作作業を圧迫しない程度でのサポートしか出来ませんのでご了承ください。<br>
-			また複数の動作環境をサポートすると制作作業をかなり圧迫されるので、ブラウザ固有の不具合はchromeのみで他（特にios）は対応しない可能性があります。<br>
-			<br>
-			……などと無責任な事を書き綴っておりますが要望やバグ報告・その他何かあれば<a href="https://twitter.com/_kasumi_so_">Twitter(X)</a>までお気軽にどうぞ。<br>
-			しばらく対応できませんが時間のある時にやってみます。<br>
+			<h2>Adding Buttons (Canvas Action)</h2>
+            <ol>
+                <li>Click within the canvas to draw a button. Alternatively, fill in the X, Y, Width, and Height fields. (You can always make adjustments from the right-side menu.)</li>
+                <li>Use the 'TYPE' dropdown to set the button's function.</li>
+                <li>Enter the name of the label you want to jump to.</li>
+                <li>Select the sound files you'd like to play when hovering and clicking the button.</li>
+                <li>When you're happy with the way things look, click the 'Add Button' button to register it within the definition file.</li>
+            </ol>
+
+			<h2>Delete Buttons (Canvas Action)</h2>
+            <ol>
+                <li>To delete a button, select it on the canvas (you'll know a button is selected when it turns grey).</li>
+                <li>At this point, you can simply select 'Remove Button' to delete it.</li>
+            </ol>
+
+			<h2>Edit Buttons (Canvas Action)</h2>
+            <ol>
+                <li>To edit a button, select it on the canvas (you'll know a button is selected when it turns grey).</li>
+                <li>Redraw the button or enter the desired position from the right-side menu.</li>
+                <li>Select the 'Add Button' button to re-register the edited button.</li>
+            </ol>
+			
+            <h2>Setting a Background Image</h2>
+            <ol>
+                <li>This is only for those interested in seeing a simple preview.</li>
+                <li>Click the 'Set a Background' button.</li>
+                <li>Select the desired image.</li>
+                <li>The image will be dispaly as a background.</li>
+                <li>Note: Only 1280x720 images are supported, other images will not display correctly.</li>
+            </ol>
+
+            <h2>Generating a GUI Definition File</h2>
+			<ol>
+                <li>Enter the desired file name.</li>
+                <li>Select the desired extension (<code>jpg</code> will display a white background while <code>png</code> will be a transparant line-drawing).</li>
+                <li>When everything looks right, select the 'Generate GUI Definition File' button.</li>
+            </ol>
+
+            <h2>Please Note:</h2>
+            <ul>
+                <li>If you deny the multi-download prompt, only the first file will be downloaded.</li>
+                <li>Even if a background image is selected, it will not be exported.</li>
+            </ul>
+
+			<h2>Disclaimer:</h2>
+			<p>
+                This project was created for my own use, and I have decided to release it so that others can make use of it.
+                For this reason, I am only able to provide limited support (if any).
+                In a similar vain, cross-platform development would cause a few headaches,
+                therfore any browser-compatibility issues should be remedied by using Chrome (especially in an IOS environment).
+            </p>
+
+			<p>
+                If you have any requests, bug reports, or etc, please reach out via <a href="https://twitter.com/_kasumi_so_">Twitter(X)</a>.
+                I may not respond right away, but I'll try when I'm free!
+            </p>
 		</div>
 	</div>
 
