@@ -14,8 +14,7 @@
 </head>
 
 <body id="body">
-	<span style="font-size:28px;margin-right:30px;">GUIジェネレーター</span>英語版はこちら→ <a href="en/index.html">English version</a>
-	<br>
+
 	<div id=main>
 		<div id="whiteBoard"></div>
 		<div id="bg"></div>
@@ -78,7 +77,7 @@
 			
 			<div>
 				使用する背景を表示する：<br>
-				<input type="file" id="selectBG" accept=".png,.jpg" onchange="SetBG()">
+				<input type="file" id="selectBG" accept=".png" onchange="SetBG()">
 			</div>
 			
 			<br><br><br>
@@ -90,7 +89,7 @@
 			<div>
 				画像拡張子:
 				<input type="radio" name="ext" value="png" checked>png
-				<!--<input type="radio" name="ext" value="jpg">jpg!-->
+				<!-- <input type="radio" name="ext" value="jpg">jpg -->
 			</div>
 			<br>
 			<!-- generate -->
@@ -531,10 +530,10 @@
 					put_data+="\t"+"x: "+btnData[i].x+";\n"+
 					"\t"+"y: "+btnData[i].y+";\n"+
 					"\t"+"width: "+btnData[i].w+";\n"+
-					"\t"+"height: "+btnData[i].h+";\n";
-					if(btnData[i].pSe!="")put_data+="\t"+"pointse: "+btnData[i].pSe+";\n";
-					if(btnData[i].cSe!="")put_data+="\t"+"clickse: "+btnData[i].cSe+";\n";
-				put_data+="}\n\n";
+					"\t"+"height: "+btnData[i].h+";\n"+
+					"\t"+"pointse: "+btnData[i].pSe+";\n"+
+					"\t"+"clickse: "+btnData[i].cSe+";\n"+
+				"}\n\n";
 			}
 		}
 		let blob = new Blob([put_data],{type:"text/plan"});
